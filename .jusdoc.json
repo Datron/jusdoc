@@ -1,0 +1,12 @@
+{
+    "src/extension.ts": {
+        "activate": {
+            "type": "function",
+            "parameters": [],
+            "returns": [],
+            "summary": "activate extension",
+            "description": "",
+            "examples": ""
+        }
+    }
+}
