@@ -1,0 +1,31 @@
+[package]
+name = "cli"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+jusdoc-inference = { path = "../inference" }
+candle = { workspace = true }
+candle-transformers = { workspace = true }
+candle-nn = { workspace = true }
+candle-flash-attn = { workspace = true, optional = true }
+anyhow = { workspace = true }
+tokenizers = { workspace = true }
+libc = { workspace = true }
+intel-mkl-src = { workspace = true, optional = true }
+accelerate-src = { workspace = true, optional = true }
+half = { workspace = true, optional = true }
+cudarc = { workspace = true, optional = true }
+
+[build-dependencies]
+anyhow = { workspace = true }
+
+[features]
+mkl = ["dep:intel-mkl-src", "candle/mkl", "candle-nn/mkl", "candle-transformers/mkl"]
+accelerate = ["dep:accelerate-src", "candle/accelerate", "candle-nn/accelerate", "candle-transformers/accelerate"]
+cuda = ["candle/cuda", "candle-nn/cuda", "candle-transformers/cuda"]
+cudnn = ["candle/cudnn"]
+flash-attn = ["cuda", "candle-transformers/flash-attn", "dep:candle-flash-attn"]
+nccl = ["cuda", "cudarc/nccl", "dep:half"]

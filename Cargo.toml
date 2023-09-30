@@ -1,0 +1,45 @@
+[workspace]
+
+members = [
+    "src/cli",
+    "src/inference",
+]
+
+[workspace.dependencies]
+anyhow = { version = "1", features = ["backtrace"] }
+intel-mkl-src = { version = "0.8.1", features = ["mkl-static-lp64-iomp"] }
+libc = { version = "0.2.147" }
+tokenizers = { version = "0.14" }
+accelerate-src = { version = "0.3.2" }
+candle = { git = "https://github.com/huggingface/candle.git", version = "0.2.3", package = "candle-core" }
+candle-transformers = { git = "https://github.com/huggingface/candle.git", version = "0.2.3" }
+candle-nn = { git = "https://github.com/huggingface/candle.git", version = "0.2.3" }
+candle-flash-attn = { git = "https://github.com/huggingface/candle.git", version = "0.2.3" }
+serde = { version = "1.0.171", features = ["derive"] }
+serde_json = "1.0.99"
+clap = { version = "4.2.4", features = ["derive"] }
+half = { version = "2.3.1", features = ["num-traits", "use-intrinsics", "rand_distr"] }
+num-traits = "0.2.15"
+rand = "0.8.5"
+rand_distr = "0.4.3"
+cudarc = { version = "0.9.14", features = ["f16"] }
+
+byteorder = "1.4.3"
+# TODO: Switch back to the official gemm implementation once it has caught up.
+gemm = { version = "0.16.0", package = "candle-gemm" }
+image = { version = "0.24.7", default-features = false, features = ["jpeg", "png"] }
+imageproc = { version = "0.23.0", default-features = false }
+log = "0.4"
+memmap2 = { version = "0.7.1", features = ["stable_deref_trait"] }
+num_cpus = "1.15.0"
+parquet = { version = "45.0.0" }
+rayon = "1.7.0"
+rusttype = { version = "0.9", default-features = false }
+safetensors = "0.3.1"
+thiserror = "1"
+tracing = "0.1.37"
+tracing-chrome = "0.7.1"
+tracing-subscriber = "0.3.7"
+wav = "1.0.0"
+yoke = { version = "0.7.2", features = ["derive"] }
+zip = { version = "0.6.6", default-features = false }
